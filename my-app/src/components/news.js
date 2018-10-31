@@ -1,14 +1,19 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 
+
 class News extends Component {
-    render () {
+    render() {
         return (
-            <div className="App-headers">
-            <p>Новостей нет</p>
+            <div className={'inputContainer'}>
+                <label>
+                    <input className="checkbox" type="checkbox" name="checkbox-test"></input>
+                    <span className="checkbox-custom"></span>
+                </label>
+                <input className={'inputArea'} placeholder={'Add your task'}></input>
+                <input type="submit" className="submit" value="Add!"></input>
             </div>
         );
-
     }
 
 }

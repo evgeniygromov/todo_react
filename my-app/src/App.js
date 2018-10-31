@@ -9,8 +9,8 @@ class App extends Component {
     render() {
         return (
             <div>
-            <Apps/>;
-            <News />
+            <Apps/>
+            {/*<News />*/}
                 </div>)
 
     }

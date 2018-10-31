@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import News from './components/news.js';
+import News from './news.js';
 import './App.css';
 
 
@@ -8,8 +8,8 @@ class Apps extends Component {
         return (
             <div className="App">
             <header className="App-header">
-                <h1>Всем привет, я компонент React</h1>
-
+                <h1>Todo list</h1>
+                <News />
             </header>
         </div>
     );
