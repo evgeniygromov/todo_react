@@ -46,6 +46,7 @@
 .submit {
   display: block;
   height: 60px;
+  width: 100px;
   font-size: 16px;
   border-radius: 35px;
   border: 0;

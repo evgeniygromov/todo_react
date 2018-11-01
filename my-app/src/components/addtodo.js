@@ -2,7 +2,19 @@ import React, {Component} from 'react';
 import './App.css';
 
 
-class News extends Component {
+class AddTodo extends Component {
+    state = {
+        name: 'add task',
+    }
+
+    updateData = () => {
+
+        this.setState ({
+            name: (this.state.name === 'add task') ? "another!" : "add task"
+        })
+
+    }
+
     render() {
         return (
             <div className={'inputContainer'}>
@@ -11,7 +23,11 @@ class News extends Component {
                     <span className="checkbox-custom"></span>
                 </label>
                 <input className={'inputArea'} placeholder={'Add your task'}></input>
-                <input type="submit" className="submit" value="Add!"></input>
+                <button  className="submit"
+                         onClick={() => {this.updateData()}}   >
+                    {this.state.name}
+
+                </button>
             </div>
         );
     }
@@ -19,4 +35,4 @@ class News extends Component {
 }
 
 
-export default News;
+export default AddTodo;
