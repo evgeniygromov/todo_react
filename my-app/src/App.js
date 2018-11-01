@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
-import Apps from './components/title.js';
+import Header from './components/header.js';
+import AddTodo from "./components/addtodo";
 
 class App extends Component {
+
+
     render() {
         return (
             <div>
-                <Apps/>
+                <Header/>
+                <AddTodo/>
             </div>)
 
     }
