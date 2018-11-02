@@ -3,37 +3,61 @@ import './App.css';
 import Li from './li.js';
 
 class AddTodo extends Component {
+
     state = {
         name: 'add task',
-        todoList: ['fdfffl', 'ffff', 'jdnkjfnm ambc ma s acma c ca camcamcamcammamcmacc a ca ac', 'fdnmddmdmdmdmdmd'],
-
+        status: false,
+        arr: [],
+        id: 0,
     }
 
     updateData = () => {
+        const {arr} = this.state;
+
+        const newToDo = this.textInput.value;
+
+        arr.push(newToDo);
 
         this.setState({
-            name: (this.state.name === 'add task') ? "another!" : "add task"
+            arr: arr,
+            id: this.id+1,
         })
-
+        this.textInput.value = null;
     }
 
-    render() {
-        const { todoList, name } = this.state;
 
-        const todoLists = todoList.map((item, index) => <Li toDoField={item} index={index} />)
+
+
+
+    getTodoLists = () => {
+        const {arr} = this.state;
+
+        return arr.map((value, index) => <Li toDoField={value} index={index} key={index}  ></Li>);
+    }
+
+
+
+    render() {
+
+
+
+
         return (
             <div>
                 <div className={'inputContainer'}>
                     <label>
-                        <input className="checkbox" type="checkbox" name="checkbox-test"></input>
+                        <input className="checkbox" type="checkbox" name="checkbox-test"/>
                         <span className="checkbox-custom"></span>
                     </label>
-                    <input className={'inputArea'} placeholder={'Add your task'}></input>
+                    < input className={'inputArea'} type={'text'} placeholder={'Add your task'}
+                            ref={(input) => {
+                                this.textInput = input;
+                            }}/>
                     <button className="submit"
                             onClick={() => {
                                 this.updateData()
                             }}>
-                        {name}
+                        {this.state.name}
 
                     </button>
 
@@ -41,7 +65,11 @@ class AddTodo extends Component {
 
                 <div className="todoContainer">
                     <div className="todoBlock">
-                        {todoLists}
+
+
+                        {this.getTodoLists()}
+
+
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Header from './components/header.js';
 import AddTodo from "./components/addtodo";
 
-class App extends Component {
+export default class App extends Component  {
 
 
     render() {
@@ -15,5 +15,5 @@ class App extends Component {
     }
 }
 
-export default App;
+// export default App;
 
