@@ -177,3 +177,10 @@ p {
   display: flex;
   /*justify-content: left;*/
 }
+
+
+.p-check {
+    display: flex;
+    text-decoration: line-through
+    /*justify-content: left;*/
+}

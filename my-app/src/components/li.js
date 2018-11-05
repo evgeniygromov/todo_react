@@ -4,20 +4,20 @@ class Li extends Component {
 
 
     deleteTask = (e) => {
-        console.log('ddd');
-this.props.deleteItem(e.target.id);
+        this.props.deleteItem(e.target.id);
 
 
     }
 
 
-    checkboxChange =  (e) => {
-    this.props.check(e.target.id);
-}
+    checkboxChange = (e) => {
+        this.props.checkBox(e.target.id);
+
+    }
 
 
     render() {
-        console.log('сука');
+        // console.log('test');
         // const {arr} = this.props;
         const {toDoField} = this.props;
 
@@ -25,7 +25,8 @@ this.props.deleteItem(e.target.id);
 
             <div className={'listLi'}>
                 <label>
-                    <input className="checkbox" type="checkbox" name="checkbox-test" onChange={this.checkboxChange}></input>
+                    <input className="checkbox" type="checkbox" name="checkbox-test"
+                           onChange={this.checkboxChange}></input>
                     <span className="checkbox-customList"></span>
                 </label>
                 <p>{toDoField}</p>

@@ -8,7 +8,7 @@ class AddTodo extends Component {
         name: 'add task',
         status: false,
         arr: [],
-        id: 0,
+        id: 1,
         values: "",
         // arrs: {},
     }
@@ -16,9 +16,16 @@ class AddTodo extends Component {
 
     deleteItem = (id) => {
 
-        this.setState ({
+        this.setState({
             arr: this.state.arr.filter(el => el.id !== +id)
         })
+    }
+
+    checkBox = (id) => {
+
+        const toDoObj = this.state.arr.find(el => el.id !== +id);
+        console.log(this.state.arr.id);
+       console.log('----------toDoObj:', toDoObj);
     }
 
     updateData = () => {
@@ -26,7 +33,7 @@ class AddTodo extends Component {
 
         this.setState({
             // arr: arr,
-            id: this.state.id+1,
+            id: this.state.id + 1,
         })
 
         const toDo = {
@@ -45,12 +52,6 @@ class AddTodo extends Component {
         // this.textInput.value = "";
     }
 
-checkBox =(id) => {
-        const toDoObj = this.state.arr.find(el => el.id !== +id);
-        console.log('----------:toDoObj',toDoObj );
-}
-
-
 
     getTodoLists = () => {
         const {arr} = this.state;
@@ -58,15 +59,12 @@ checkBox =(id) => {
         return arr.map((el) => <Li {...el}
                                    toDoField={this.textInput.value}
                                    arr={arr}
-                                   deleteItem = {this.deleteItem}
-                                   check = {this.checkBox}  ></Li>);
+                                   deleteItem={this.deleteItem}
+                                   checkBox={this.checkBox}></Li>);
     }
 
 
-
     render() {
-
-
 
 
         return (
