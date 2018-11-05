@@ -9,30 +9,57 @@ class AddTodo extends Component {
         status: false,
         arr: [],
         id: 0,
+        values: "",
+        // arrs: {},
+    }
+
+
+    deleteItem = (id) => {
+
+        this.setState ({
+            arr: this.state.arr.filter(el => el.id !== +id)
+        })
     }
 
     updateData = () => {
         const {arr} = this.state;
 
-        const newToDo = this.textInput.value;
-
-        arr.push(newToDo);
-
         this.setState({
-            arr: arr,
-            id: this.id+1,
+            // arr: arr,
+            id: this.state.id+1,
         })
-        this.textInput.value = null;
+
+        const toDo = {
+            value: this.textInput.value,
+            status: this.state.status,
+            id: this.state.id,
+            key: this.state.id,
+
+
+        };
+
+        // const newToDo = this.textInput.value;
+
+        arr.push(toDo);
+        console.log(arr);
+        // this.textInput.value = "";
     }
 
-
+checkBox =(id) => {
+        const toDoObj = this.state.arr.find(el => el.id !== +id);
+        console.log('----------:toDoObj',toDoObj );
+}
 
 
 
     getTodoLists = () => {
         const {arr} = this.state;
 
-        return arr.map((value, index) => <Li toDoField={value} index={index} key={index}  ></Li>);
+        return arr.map((el) => <Li {...el}
+                                   toDoField={this.textInput.value}
+                                   arr={arr}
+                                   deleteItem = {this.deleteItem}
+                                   check = {this.checkBox}  ></Li>);
     }
 
 
@@ -47,7 +74,7 @@ class AddTodo extends Component {
                 <div className={'inputContainer'}>
                     <label>
                         <input className="checkbox" type="checkbox" name="checkbox-test"/>
-                        <span className="checkbox-custom"></span>
+                        <span className="checkbox-custom" c></span>
                     </label>
                     < input className={'inputArea'} type={'text'} placeholder={'Add your task'}
                             ref={(input) => {
