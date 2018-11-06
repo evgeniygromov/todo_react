@@ -68,11 +68,16 @@
 
 .checkbox-custom {
   position: relative;
+  text-align: center;
   width: 60px;
-  height: 60px;
+  height: 44px;
   border: 2px solid #ccc;
   border-radius: 30px;
   margin-right: 20px;
+  font-size: 11px;
+  padding-top:15px;
+  /*background-color: white;*/
+  color: #3a3f4b;
 }
 
 .checkbox-custom,
@@ -173,14 +178,49 @@ button:hover {
 
 }
 
-p {
+
+.p1 {
   display: flex;
-  /*justify-content: left;*/
+  /*color: green*/
+  /*text-decoration: line-through*/
 }
 
-
-.p-check {
+.p2 {
     display: flex;
-    text-decoration: line-through
+    text-decoration: line-through;
+  /*color: red;*/
     /*justify-content: left;*/
+}
+
+.completeBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  background-color: #8bcb19;
+}
+
+.clearAll {
+  display: block;
+  width: 62px;
+  height: 62px;
+  border: 2px solid #ccc;
+  border-radius: 30px;
+  margin-right: 20px;
+  color: #3a3f4b;
+  font-size: 11px;
+}
+
+.deleteTaskButton {
+  display: block;
+  width: 35px;
+  height: 35px;
+  border: 2px solid #ccc;
+  border-radius: 30px;
+  /*margin-right: 20px;*/
+  /*background-image: url(../img/x.png);*/
+  /*background-size: cover;*/
+  /*padding: 5px;*/
+  color: #3a3f4b;
+  font-size: 16px;
 }

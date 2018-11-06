@@ -1,36 +1,27 @@
 import React, {Component} from 'react';
 
 class Li extends Component {
-
-
     deleteTask = (e) => {
         this.props.deleteItem(e.target.id);
-
-
     }
 
 
     checkboxChange = (e) => {
         this.props.checkBox(e.target.id);
-
     }
 
 
     render() {
-        // console.log('test');
-        // const {arr} = this.props;
-        const {toDoField} = this.props;
-
+        const {value, id, status} = this.props;
         return (
-
             <div className={'listLi'}>
                 <label>
-                    <input className="checkbox" type="checkbox" name="checkbox-test"
+                    <input id={id} className="checkbox" type="checkbox" name="checkbox-test"
                            onChange={this.checkboxChange}></input>
                     <span className="checkbox-customList"></span>
                 </label>
-                <p>{toDoField}</p>
-                <button id={this.props.id} onClick={this.deleteTask}>Delete</button>
+                <div className={status ? "p1" : "p2"}>{value}</div>
+                <button id={id} className={"deleteTaskButton"} onClick={this.deleteTask}>X</button>
             </div>)
     }
 }
