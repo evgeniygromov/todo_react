@@ -61,15 +61,15 @@ class AddTodo extends Component {
         }
     }
 
-    allCheckboxChange = () => {
-        this.state.arr.status = !this.state.arr.status;
+    // allCheckboxChange = () => {
+    //     this.state.arr.status = !this.state.arr.status;
         // this.setState({
-        //     status: false,
+        //     status: true,
         // })
        // this.state.arr.status = !this.state.arr.status;
-       console.log(this.state.status);
-
-    }
+    //    console.log(this.state.status);
+    //
+    // }
 
 
     clearAll = () => {
@@ -92,11 +92,11 @@ class AddTodo extends Component {
 
                 <div className="inputContainer">
                     <button className={"clearAll"}  onClick={this.clearAll}>Clear<br/> All</button>
-                    <label>
-                        <input className="checkbox" type="checkbox" name="checkbox-test"
-                               onChange={this.allCheckboxChange}/>
-                        <span className="checkbox-custom">Check <br/>All</span>
-                    </label>
+                    {/*<label>*/}
+                        {/*<input className="checkbox" type="checkbox" name="checkbox-test"*/}
+                               {/*onChange={this.allCheckboxChange}/>*/}
+                        {/*<span className="checkbox-custom">Check <br/>All</span>*/}
+                    {/*</label>*/}
                     < input className={'inputArea'} type={'text'} placeholder={'Add your task'}
                             ref={(input) => {
                                 this.textInput = input;

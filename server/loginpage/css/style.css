@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+
+html, body {
+    height: 100%;
+}
+
+.loginblock {
+    width: 100%;
+    height: 100%;
+    /*margin: 0 auto;*/
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+}
+
+header > h1 {
+    display: block;
+    font-size: 2.6em;
+    font-family: "Open Sans Condensed";
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    height: 60%;
+}
+
+.loginblock__form {
+    /*margin: 0 auto;*/
+    width: 310px;
+    height: 300px;
+    padding: 40px;
+    background-color: #00BFFF;
+    border: 1px solid #696969;
+    border-radius: 10px;
+    font-family: "Open Sans Condensed";
+    font-size: 1em;
+}
+
+.form__inputname {
+    display: block;
+    margin-top: -10px;
+    height: 25px;
+    width: 300px;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.form__inputpassword {
+    display: block;
+    margin-top: -10px;
+    height: 25px;
+    width: 300px;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.form__submit {
+    display: block;
+    margin-top: 20px;
+    height: 35px;
+    padding: 5px 17px 5px 17px;
+    background-color: white;
+    outline: none !important;
+    border: none;
+    transition-duration: 1.5s;
+    border-radius: 3px;
+}
+
+.form__submit:active, .form_submit:focus {
+    outline: none !important;
+}
+
+.form__submit:hover {
+    background-color: #F0E68C;
+}
+
+.form__footertext {
+    display: flex;
+    justify-content: end;
+    margin-top: 100px;
+}
