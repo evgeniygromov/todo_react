@@ -2,12 +2,22 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const login = require('./routes/product.route'); // Imports routes for the products
 const app = express();
-
-const UserSchema = require('./models/product.model');
-
+// const del = require('./routes/product.route')
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+
+
+
+app.all('/*', function (req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
+    res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+    next();
+});
+
 
 const mongoose = require('mongoose');
 
@@ -16,53 +26,31 @@ mongoose.connect('mongodb://localhost/todo', {useNewUrlParser: true})
     .catch(err => console.log(err));
 
 
-//
 mongoose.Promise = global.Promise;
-const db = mongoose.connection;
+// const db = mongoose.connection;
+
+// app.use('/login', login);
 
 
-
-app.use('/login', login);
-
-
-app.get('/',  (req, res)=>{
+app.get('/',  (req, res) => {
     res.send("hey");
 });
 
 
+app.post('/login', login.login);
 
-app.get('/login',(req, res) => {
-    const email = req.query.email;
-    const pass = req.query.pass;
+// app.post('/delete/:id', login.del);
+app.delete('/delete/:id', login.del);
 
-    var User = mongoose.model("User", UserSchema);
+app.get('/all', login.all);
+app.delete('/deleteall', login.deleteall);
 
-    User.find({name: 'tetss@gmail.com'},(err, data) => {
-        console.log('----------err:', err);
-        console.log('----------test:', data);
-    })
+// app.get('/login',(req, res) => {
+//     login;
+//     // mongoose.disconnect();  // отключение от базы данных
+// });
 
-
-    var user = new User({
-        name: email,
-        pass: pass,
-    });
-
-
-    user.save(function(err){
-        if(err) return console.log(err);
-        console.log("Сохранен объект", user);
-    })
-    res.send("hey");
-    // mongoose.disconnect();  // отключение от базы данных
-
-});
-
-
-
-
-
-app.listen(3001, function () {
+app.listen(1234, function () {
     console.log('node app listening on port 3001!');
 });
 

@@ -1,22 +1,27 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-let UserSchema = new Schema ({
-    name: {
-        type: String,
-        required: true,
-    },
-    pass: {
-        type: String,
-        required: true,
-    },
-    // passСhecked: {
-    //     type: String,
-    //     required: true
-    // },
-});
+const Item = mongoose.Schema;
 
+    let ItemSchema = new Item(
+        {
+            value: {
+                type: String,
+                required: true,
+            },
+            status: {
+                type: Boolean,
+                // required: true,
+            },
+            id: {
+                type: String,
+                // required: true,
+            },
 
+            key: {
+                type: String,
+                // required: true,
+            },
 
-// Export the model
-module.exports = UserSchema;
+        });
+
+module.exports = ItemSchema;

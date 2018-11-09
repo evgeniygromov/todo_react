@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Li from './li.js';
+import axios from 'axios';
 
 class AddTodo extends Component {
 
@@ -9,12 +10,20 @@ class AddTodo extends Component {
         arr: [],
         id: 1,
         checked: [],
+        status: true,
     }
 
     deleteItem = (id) => {
+        console.log(id);
+        axios({
+            method: 'delete',
+            url: `http://localhost:1234/delete/${id}`,
+        })
+
         this.setState({
             arr: this.state.arr.filter(el => el.id !== +id)
         })
+
     }
 
     checkBox = (id) => {
@@ -37,12 +46,32 @@ class AddTodo extends Component {
                 value: this.textInput.value,
                 id: this.state.id,
                 key: this.state.id,
-                status: true,
+                status: this.status,
             };
 
             arr.push(toDo);
+
+            axios({
+                    method: 'post',
+                    url: 'http://localhost:1234/login',
+                    data: {
+                        value: this.textInput.value,
+                        status: this.state.status,
+                        id: this.state.id,
+                        key: this.state.id,
+                        // key: this.state.id,
+                    }
+
+                }
+            )
+
+
             this.textInput.value = "";
+
+
         }
+
+
     }
 
     getTodoLists = () => {
@@ -61,18 +90,13 @@ class AddTodo extends Component {
         }
     }
 
-    // allCheckboxChange = () => {
-    //     this.state.arr.status = !this.state.arr.status;
-        // this.setState({
-        //     status: true,
-        // })
-       // this.state.arr.status = !this.state.arr.status;
-    //    console.log(this.state.status);
-    //
-    // }
 
 
     clearAll = () => {
+        axios({
+            method: 'delete',
+            url: 'http://localhost:1234/deleteall',
+        })
         this.setState({
             arr: [],
         })
@@ -91,12 +115,8 @@ class AddTodo extends Component {
                     Not complete: ${notCompleteCounts}`} </div>
 
                 <div className="inputContainer">
-                    <button className={"clearAll"}  onClick={this.clearAll}>Clear<br/> All</button>
-                    {/*<label>*/}
-                        {/*<input className="checkbox" type="checkbox" name="checkbox-test"*/}
-                               {/*onChange={this.allCheckboxChange}/>*/}
-                        {/*<span className="checkbox-custom">Check <br/>All</span>*/}
-                    {/*</label>*/}
+                    <button className={"clearAll"} onClick={this.clearAll}>Clear<br/> All</button>
+
                     < input className={'inputArea'} type={'text'} placeholder={'Add your task'}
                             ref={(input) => {
                                 this.textInput = input;
