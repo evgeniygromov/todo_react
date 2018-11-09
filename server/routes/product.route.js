@@ -14,7 +14,6 @@ const all = router.get('/all', product_controller.all);
 const deleteall = router.delete('/deleteall', product_controller.deleteall);
 
 
-
 module.exports = {
     login: login,
     del: del,

@@ -91,7 +91,6 @@ class AddTodo extends Component {
     }
 
 
-
     clearAll = () => {
         axios({
             method: 'delete',

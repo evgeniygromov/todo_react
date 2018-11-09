@@ -8,8 +8,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 
-
-
 app.all('/*', function (req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -32,7 +30,7 @@ mongoose.Promise = global.Promise;
 // app.use('/login', login);
 
 
-app.get('/',  (req, res) => {
+app.get('/', (req, res) => {
     res.send("hey");
 });
 
