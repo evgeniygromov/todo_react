@@ -10,7 +10,6 @@ class Li extends Component {
         this.props.checkBox(e.target.id);
     }
 
-
     render() {
         const {value, id, status} = this.props;
         return (
@@ -20,7 +19,7 @@ class Li extends Component {
                            onChange={this.checkboxChange}></input>
                     <span className="checkbox-customList"></span>
                 </label>
-                <div className={status ? "p2" : "p1"}>{value}</div>
+                <div className={status ? "p1" : "p2"}>{value}</div>
                 <button id={id} className={"deleteTaskButton"} onClick={this.deleteTask}>X</button>
             </div>)
     }

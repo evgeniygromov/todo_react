@@ -3,27 +3,23 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 
-exports.login = function (req, res) {
-
-    // console.log('----------req:', req);
-    // console.log('----------res:', res);
+exports.addtodo = function (req, res) {
     const value = req.body.value;
     const status = req.body.status;
     const id = req.body.id;
-    const key = req.body.key;
+    const user = "vanya";
     const items = mongoose.model("User", ItemSchema);
-    console.log('----------status:', status);
-
 
     const item = new items({
         value: value,
         status: status,
         id: id,
-        key: key,
+        user: user,
     });
 
     item.save(function (err) {
         if (err) return console.log(err);
+
         console.log("Сохранен объект", item);
     })
 
@@ -33,41 +29,44 @@ exports.login = function (req, res) {
 
 
 exports.del = function (req, res) {
-    // console.log('----------req:', req);
+console.log('----------req.params:', req.params);
     const prm = req.params.id;
-    // console.log(prm);
-    console.log(`сука ${prm}`);
+    console.log('----------prm:', prm);
+
     db.collection('users').deleteOne({id: prm});
-    // db.collection('users').deleteOne({id: +req.params.id}, function (err) {
-    //     if (err) {
-    //         console.log('err', err);
-    //     };
     res.send(`Deleted succesfully! `);
-// })
 };
 
 
-exports.all = function (req, res) {
+exports.getarray = function (req, res) {
+    db.collection('users').find({user: "vanya"}).toArray(function (err, results) {
+        const dataArr = JSON.stringify(results);
+        res.send(dataArr);
+        // return  dataArr = JSON.stringify(results);
+        //   console.log(dataArr);
 
-    db.collection('users').find({}).toArray(function (err, results) {
-        console.log(results);
     })
-    res.send(`all items showed!`);
-//
 }
+
+exports.newuser = function (req, res) {
+    const value = req.body.value;
+}
+
+
 
 
 exports.deleteall = function (req, res) {
-
-
     // db.collection('users').remove({value: 'rerere'});
     db.collection('users').remove();
-    // {
-    //     console.log(results);
-    //     })
     res.send(`Deleted succesfully!`);
-//
 }
+// exports.getarray = function (req, res) {
+//     db.collection('users').find({}, null, function (err, results) {
+//         console.log(results);
+//         res.send(results)
+//     });
+//
+// }
 
 
 // exports.login = function (req, res) {

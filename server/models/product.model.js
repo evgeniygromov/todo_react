@@ -10,18 +10,22 @@ let ItemSchema = new Item(
         },
         status: {
             type: Boolean,
-            // required: true,
+            required: true,
         },
         id: {
             type: String,
-            // required: true,
         },
 
-        key: {
+        user: {
             type: String,
-            // required: true,
         },
-
     });
 
 module.exports = ItemSchema;
+
+//
+// module.exports = {
+//     Item:  ItemSchema,
+//     // del: del,
+//
+// };
