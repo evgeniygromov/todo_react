@@ -8,7 +8,7 @@ exports.addtodo = function (req, res) {
     const status = req.body.status;
     const id = req.body.id;
     const user = "vanya";
-    const items = mongoose.model("User", ItemSchema);
+    const items = mongoose.model("Items", ItemSchema);
 
     const item = new items({
         value: value,
@@ -33,13 +33,13 @@ console.log('----------req.params:', req.params);
     const prm = req.params.id;
     console.log('----------prm:', prm);
 
-    db.collection('users').deleteOne({id: prm});
+    db.collection('items').deleteOne({id: prm});
     res.send(`Deleted succesfully! `);
 };
 
 
 exports.getarray = function (req, res) {
-    db.collection('users').find({user: "vanya"}).toArray(function (err, results) {
+    db.collection('items').find({user: "vanya"}).toArray(function (err, results) {
         const dataArr = JSON.stringify(results);
         res.send(dataArr);
         // return  dataArr = JSON.stringify(results);
@@ -56,12 +56,12 @@ exports.newuser = function (req, res) {
 
 
 exports.deleteall = function (req, res) {
-    // db.collection('users').remove({value: 'rerere'});
-    db.collection('users').remove();
+    // db.collection('items').remove({value: 'rerere'});
+    db.collection('items').remove();
     res.send(`Deleted succesfully!`);
 }
 // exports.getarray = function (req, res) {
-//     db.collection('users').find({}, null, function (err, results) {
+//     db.collection('items').find({}, null, function (err, results) {
 //         console.log(results);
 //         res.send(results)
 //     });
@@ -72,21 +72,21 @@ exports.deleteall = function (req, res) {
 // exports.login = function (req, res) {
 //     const email = req.query.email;
 //     const pass = req.query.pass;
-//     const User = mongoose.model("User", UserSchema);
+//     const User = mongoose.model("User", itemschema);
 //
 //     User.find({name: email},(err, data) => {
 //
 //
 //
-//     const usersdata = data;
-//     usersdata.forEach((item, i)=> {
-//         (email == usersdata[i].name) ? cons : console.log('dkfkkf');
+//     const itemsdata = data;
+//     itemsdata.forEach((item, i)=> {
+//         (email == itemsdata[i].name) ? cons : console.log('dkfkkf');
 //     }
 //     )
 //
 //
 //
-//         // console.log(usersdata);
+//         // console.log(itemsdata);
 //         // console.log('----------err:', err);
 //         // console.log('----------test:', data);
 //     })
